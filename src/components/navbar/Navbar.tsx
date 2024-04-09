@@ -1,5 +1,6 @@
 import Link from "next/link";
 import React from "react";
+import styles from "./navbar.module.scss";
 
 interface Links {
     name: string;
@@ -15,7 +16,7 @@ const navlinks: Links[] = [
 const Navbar = () => {
     return (
         <>
-            <nav>
+            <nav className={styles.nav}>
                 <ul>
                     {navlinks.map((link, index) => (
                         <li key={index}>
