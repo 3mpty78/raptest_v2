@@ -1,0 +1,28 @@
+@font-face {
+    font-family: "protest";
+    src: url(/fonts/PROTESTRIOT-REGULAR.TTF);
+}
+@font-face {
+    font-family: "barlowBlack";
+    src: url(/fonts/BARLOW-BLACK.TTF);
+}
+@font-face {
+    font-family: "barlowBold";
+    src: url(/fonts/BARLOW-BOLD.TTF);
+}
+@font-face {
+    font-family: "barlowRegular";
+    src: url(/fonts/BARLOW-REGULAR.TTF);
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: "barlowRegular";
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
