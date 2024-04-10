@@ -1,30 +1,37 @@
 "use client";
-import Image from "next/image";
-import Link from "next/link";
 import React, { useEffect, useState } from "react";
 import styles from "./artistList.module.scss";
+import { fetchArtists } from "../../app/functions/fetchArtists";
+import Link from "next/link";
+import Image from "next/image";
 
 interface Artist {
     _id: string;
     name: string;
     imageUrl: string;
 }
+interface Album {
+    artist: string;
+    title: string;
+    imageUrl: string;
+    tracks: [{ title: string; lyrics: string[] }];
+}
 
-const FetchArtists = () => {
+export const FetchArtists = () => {
     const [artists, setArtists] = useState<Artist[]>([]);
     const [isLoading, setIsLoading] = useState<boolean>(true);
+
     useEffect(() => {
-        const fetchArtists = async () => {
+        const fetchData = async () => {
             try {
-                const response = await fetch("/api/artists");
-                const data = await response.json();
-                setArtists(data);
+                const { artistsData } = await fetchArtists();
+                setArtists(artistsData);
                 setIsLoading(false);
             } catch (error) {
-                console.error(error);
+                setIsLoading(false);
             }
         };
-        fetchArtists();
+        fetchData();
     }, []);
 
     return (
@@ -34,18 +41,23 @@ const FetchArtists = () => {
                     Chargement des artistes ...
                 </div>
             )}
-            {artists.map((artist) => (
-                <Link
-                    href={`/${artist._id}/games`}
-                    target="_top"
-                    key={artist._id}
-                    className={styles.card}>
-                    <div className={styles.artistImage}>
-                        <Image src={artist.imageUrl} alt={artist.name} fill />
-                    </div>
-                    <p>{artist.name}</p>
-                </Link>
-            ))}
+            {!isLoading &&
+                artists.map((artist) => (
+                    <Link
+                        href={`/${artist._id}/games`}
+                        target="_top"
+                        key={artist._id}
+                        className={styles.card}>
+                        <div className={styles.artistImage}>
+                            <Image
+                                src={artist.imageUrl}
+                                alt={artist.name}
+                                fill
+                            />
+                        </div>
+                        <p>{artist.name}</p>
+                    </Link>
+                ))}
         </div>
     );
 };
