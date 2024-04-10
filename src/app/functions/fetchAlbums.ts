@@ -1,9 +1,12 @@
 export async function fetchAlbums() {
     try {
-        const response = await fetch("/api/albums");
-        const albumsData = await response.json();
+        const albumsResponse = await fetch("/api/albums");
+        const albumsData = await albumsResponse.json();
+
         return { albumsData };
     } catch (error) {
         console.error(error);
+        alert("Erreur lors des fetch");
+        throw error;
     }
 }
