@@ -14,39 +14,4 @@
             font-family: barlowBlack;
         }
     }
-
-    .buttons {
-        display: flex;
-        flex-direction: column;
-        gap: 15px;
-
-        .loadMore {
-            font-family: "protest";
-            font-size: 20px;
-            color: #ececec;
-            text-align: center;
-            padding: 10px 60px;
-            border-radius: 30px;
-            border: 2px solid #ececec;
-            outline: none;
-            background-color: transparent;
-        }
-        .nextBtn {
-            font-family: "protest";
-            font-size: 30px;
-            color: #c40000;
-            text-align: center;
-            padding: 10px 60px;
-            border-radius: 30px;
-            border: none;
-            outline: none;
-            background-color: #ececec;
-        }
-    }
-
-    .homeIcon {
-        position: absolute;
-        top: 35px;
-        left: 30px;
-    }
 }

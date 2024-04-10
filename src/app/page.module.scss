@@ -5,6 +5,16 @@
     padding: 15px 0;
     gap: 30px;
 
+    .slogan {
+        text-align: center;
+        font-size: 24px;
+        max-width: 350px;
+
+        span {
+            font-family: barlowBlack;
+        }
+    }
+
     h1 {
         font-family: "protest";
     }
