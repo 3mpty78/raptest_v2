@@ -89,7 +89,7 @@ const PostAlbum = () => {
             }
             formData.append("tracks", JSON.stringify(tracks));
 
-            const response = await fetch("/api/projects", {
+            const response = await fetch("/api/albums", {
                 method: "POST",
                 body: formData,
             });
