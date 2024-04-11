@@ -19,16 +19,24 @@ const Answers = ({
     projectData: Album;
 }) => {
     const [selectedAnswer, setSelectedAnswer] = useState<string>("");
+    const shuffleAnswers = (answers: string[]) => {
+        for (let i = answers.length - 1; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            [answers[i], answers[j]] = [answers[j], answers[i]];
+        }
+        return answers;
+    };
+
     const handleAnswerClick = (answer: string) => {
         setSelectedAnswer(answer);
     };
+
+    const shuffledAnswers = shuffleAnswers([...badAnswers, goodAnswer]);
     return (
         <>
-            {badAnswers.map((badAnswer, index) => (
-                <button
-                    key={index}
-                    onClick={() => handleAnswerClick(badAnswer)}>
-                    {badAnswer}
+            {shuffledAnswers.map((answer, index) => (
+                <button key={index} onClick={() => handleAnswerClick(answer)}>
+                    {answer}
                 </button>
             ))}
             <button onClick={() => handleAnswerClick(goodAnswer)}>
