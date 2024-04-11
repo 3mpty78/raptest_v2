@@ -6,10 +6,6 @@ import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
 import Answers from "./Answers";
 import Image from "next/image";
 
-interface Track {
-    title: string;
-    lyrics: [string];
-}
 interface Artist {
     _id: string;
     name: string;
@@ -18,7 +14,6 @@ interface Album {
     artist: string;
     title: string;
     imageUrl: string;
-    tracks: [{ title: string; lyrics: string[] }];
 }
 
 const Covers = ({ artistId }: { artistId: string }) => {
