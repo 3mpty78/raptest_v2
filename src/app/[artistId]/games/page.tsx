@@ -1,6 +1,5 @@
 import GameCard from "@/components/games/gameCard/GameCard";
 import styles from "./games.module.scss";
-import Link from "next/link";
 
 const page = ({ params }: { params: { artistId: string } }) => {
     const { artistId } = params;
@@ -15,9 +14,12 @@ const page = ({ params }: { params: { artistId: string } }) => {
                 artistId={artistId}
                 description="Pas de sons, que des mots. A toi de trouver le titre !"
             />
-            <Link href={""} aria-disabled>
-                <h2>COMING SOON</h2>
-            </Link>
+            <GameCard
+                title="Covers"
+                link="covers"
+                artistId={artistId}
+                description="Pas de sons, que des mots. A toi de trouver le titre !"
+            />
         </section>
     );
 };
