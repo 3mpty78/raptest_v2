@@ -30,8 +30,8 @@ const Answers = ({
     const handleAnswerClick = (answer: string) => {
         setSelectedAnswer(answer);
     };
-
     const shuffledAnswers = shuffleAnswers([...badAnswers, goodAnswer]);
+
     return (
         <>
             {shuffledAnswers.map((answer, index) => (
@@ -39,9 +39,6 @@ const Answers = ({
                     {answer}
                 </button>
             ))}
-            <button onClick={() => handleAnswerClick(goodAnswer)}>
-                {goodAnswer}
-            </button>
             {selectedAnswer === goodAnswer && (
                 <>
                     <div>C'EST BON !</div>
@@ -58,7 +55,7 @@ const Answers = ({
                     </div>
                 </>
             )}
-            {selectedAnswer && badAnswers.includes(selectedAnswer) && (
+            {selectedAnswer === badAnswers.find((badAnswer) => badAnswer) && (
                 <>
                     <h1>NON !</h1>
                 </>
