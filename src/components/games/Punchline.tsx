@@ -76,7 +76,9 @@ const Punchline = ({ artistId }: { artistId: string }) => {
             setRandomPuncline(randomPunchline);
 
             // CREATIONS DES REPONSES
-            const allTracks = allAlbums.flatMap((album) => album.tracks);
+            const allTracks = associatedProject.flatMap(
+                (album) => album.tracks
+            );
             const threeBadAnswers = allTracks
                 .filter((track) => track.title !== goodAnswer)
                 .slice(0, 3)

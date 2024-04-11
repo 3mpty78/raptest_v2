@@ -1,0 +1,66 @@
+.container {
+    max-width: 390px;
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    padding: 0 30px;
+
+    h2 {
+        font-family: "barlowRegular";
+        font-weight: 300;
+        margin-bottom: 15px;
+
+        span {
+            font-family: "barlowBold";
+        }
+    }
+
+    ul {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+
+        li {
+            list-style-type: "- ";
+
+            span,
+            a {
+                font-family: "barlowBold";
+            }
+        }
+    }
+
+    p {
+        font-family: "protest";
+        font-size: 24px;
+        text-align: center;
+        font-weight: lighter;
+    }
+
+    .btn {
+        font-family: "protest";
+        font-size: 30px;
+        color: #1e1e1e;
+        text-align: center;
+        padding: 10px 60px;
+        border-radius: 30px;
+        border: none;
+        outline: none;
+        background-color: #ececec;
+    }
+
+    .socials {
+        .networks {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            row-gap: 15px;
+            column-gap: 15px;
+
+            div {
+                display: flex;
+                align-items: center;
+                gap: 30px;
+            }
+        }
+    }
+}
