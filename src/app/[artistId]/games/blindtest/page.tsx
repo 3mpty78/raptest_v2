@@ -1,10 +1,14 @@
 import Punchline from "@/components/games/Punchline";
+import styles from "./blindtest.module.scss";
 
 const page = ({ params }: { params: { artistId: string } }) => {
     const { artistId } = params;
     return (
         <section>
-            <h2>Blindtest</h2>
+            <p className={styles.description}>
+                De quel morceau <br />
+                proviennent ces lyrics ?
+            </p>
             <Punchline artistId={artistId} />
         </section>
     );

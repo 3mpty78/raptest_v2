@@ -1,10 +1,15 @@
 "use client";
 import { fetchAlbums } from "@/app/functions/fetchAlbums";
 import { fetchArtists } from "@/app/functions/fetchArtists";
-import { StaticImport } from "next/dist/shared/lib/get-img-props";
 import Image from "next/image";
 import { useEffect, useState } from "react";
+import styles from "./blindtest.module.scss";
+import Answers from "./Answers";
 
+interface Track {
+    title: string;
+    lyrics: [string];
+}
 interface Artist {
     _id: string;
     name: string;
@@ -17,10 +22,13 @@ interface Album {
 }
 
 const Punchline = ({ artistId }: { artistId: string }) => {
+    const [isLoading, setIsLoading] = useState<boolean>(true);
     const [allArtists, setAllArtists] = useState<Artist[]>([]);
     const [allAlbums, setAllAlbums] = useState<Album[]>([]);
     const [randomPunchline, setRandomPuncline] = useState<string>("");
     const [selectedAlbumData, setSelectedAlbumData] = useState<Album>();
+    const [goodAnswer, setGoodAnswer] = useState<string>("");
+    const [badAnswers, setBadAnswers] = useState<string[]>([]);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -40,7 +48,6 @@ const Punchline = ({ artistId }: { artistId: string }) => {
             const selectedArtist = allArtists.find(
                 (artist) => artist._id.toString() === artistId
             );
-
             const associatedProject = allAlbums.filter(
                 (album) => album.artist === selectedArtist?.name
             );
@@ -66,19 +73,37 @@ const Punchline = ({ artistId }: { artistId: string }) => {
                 randomProject.tracks[randomTrackIndex].lyrics[
                     randomPunchlineIndex
                 ];
+            setGoodAnswer(randomProject.tracks[randomTrackIndex].title);
             setRandomPuncline(randomPunchline);
+
+            // CREATIONS DES REPONSES
+            const allTracks = allAlbums.flatMap((album) => album.tracks);
+            const threeBadAnswers = allTracks
+                .filter((track) => track.title !== goodAnswer)
+                .slice(0, 3)
+                .map((track) => track.title);
+            setBadAnswers(threeBadAnswers);
+
+            // MASQUER L'ECRAN DE CHARGEMENT
+            setIsLoading(false);
         }
-    }, [allArtists, allAlbums, artistId]);
+    }, [allArtists, allAlbums, artistId, goodAnswer]);
 
     return (
         <>
-            <div>{randomPunchline}</div>
-            <Image
-                src={selectedAlbumData?.imageUrl || ""}
-                alt={`${selectedAlbumData?.title}'s cover`}
-                width={100}
-                height={100}
-            />
+            {isLoading && (
+                <div className={styles.loadingScreen}>Chargement ...</div>
+            )}
+            {selectedAlbumData && (
+                <>
+                    <h3>{randomPunchline}</h3>
+                    <Answers
+                        badAnswers={badAnswers}
+                        goodAnswer={goodAnswer}
+                        projectData={selectedAlbumData}
+                    />
+                </>
+            )}
         </>
     );
 };
