@@ -1,9 +1,8 @@
 "use client";
 import { fetchAlbums } from "@/app/functions/fetchAlbums";
 import { fetchArtists } from "@/app/functions/fetchArtists";
-import Image from "next/image";
 import { useEffect, useState } from "react";
-import styles from "./blindtest.module.scss";
+import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
 import Answers from "./Answers";
 
 interface Track {

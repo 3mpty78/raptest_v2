@@ -1,0 +1,142 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+    align-items: center;
+    width: 100%;
+
+    .description {
+        text-align: center;
+        font-size: 24px;
+        max-width: 320px;
+
+        span {
+            font-family: barlowBlack;
+        }
+    }
+
+    h3 {
+        background: #ececec;
+        width: 100%;
+        max-width: 350px;
+        min-height: 150px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        text-align: center;
+        color: #1e1e1e;
+        font-size: 18px;
+        font-family: "barlowRegular";
+        font-weight: lighter;
+        font-style: italic;
+        border-radius: 15px;
+
+        &::before {
+            content: "'' ";
+        }
+        &::after {
+            content: " ''";
+        }
+    }
+
+    .answersContainer {
+        display: flex;
+        flex-direction: column;
+        gap: 15px;
+        width: 100%;
+        align-items: center;
+
+        button {
+            outline: none;
+            border: none;
+            background: #ececec;
+            padding: 15px;
+            width: 100%;
+            max-width: 350px;
+            text-align: center;
+            border-radius: 15px;
+        }
+    }
+    .answer {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        min-height: 100vh;
+        backdrop-filter: blur(5px) brightness(0.75);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        gap: 30px;
+        align-items: center;
+
+        figure {
+            width: 100%;
+            flex: 2;
+            position: relative;
+        }
+
+        .message {
+            flex: 1;
+            display: flex;
+            width: 100%;
+            flex-direction: column;
+            justify-content: space-between;
+            gap: 5px;
+            align-items: center;
+            background: #ececec;
+            border-top-left-radius: 30px;
+            border-top-right-radius: 30px;
+            color: #1e1e1e;
+            padding: 30px 0 60px;
+
+            h2 {
+                font-family: "protest";
+                font-size: 30px;
+            }
+
+            .correctAnswer {
+                display: flex;
+                flex-direction: column;
+                gap: 5px;
+
+                figure {
+                    position: relative;
+                    width: 250px;
+                    aspect-ratio: 1/1;
+                    border-radius: 15px;
+                    overflow: hidden;
+                }
+
+                h4 {
+                    font-size: 24px;
+                    text-align: center;
+                }
+                h5 {
+                    font-family: "barlowRegular";
+                    font-weight: lighter;
+                    font-size: 18px;
+                    text-align: center;
+                }
+                p {
+                    font-size: 14px;
+                    font-style: italic;
+                    text-align: center;
+                }
+            }
+
+            .replayBtn {
+                background-color: #1e1e1e;
+                color: #ececec;
+                padding: 15px 60px;
+                text-align: center;
+                border-radius: 30px;
+                text-transform: uppercase;
+                font-family: "protest";
+                font-size: 20px;
+                outline: none;
+                border: none;
+            }
+        }
+    }
+}

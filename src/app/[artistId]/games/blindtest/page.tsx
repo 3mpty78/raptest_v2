@@ -4,7 +4,7 @@ import styles from "./blindtest.module.scss";
 const page = ({ params }: { params: { artistId: string } }) => {
     const { artistId } = params;
     return (
-        <section>
+        <section className={styles.container}>
             <p className={styles.description}>
                 De quel morceau <br />
                 proviennent ces lyrics ?

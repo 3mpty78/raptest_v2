@@ -2,6 +2,8 @@
 "use client";
 import Image from "next/image";
 import React, { useState } from "react";
+import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
+import illustration from "../../../public/img/winner.svg";
 
 interface Album {
     artist: string;
@@ -32,33 +34,74 @@ const Answers = ({
     };
     const shuffledAnswers = shuffleAnswers([...badAnswers, goodAnswer]);
 
+    const handleGoBack = () => {
+        window.location.reload();
+    };
+
     return (
         <>
-            {shuffledAnswers.map((answer, index) => (
-                <button key={index} onClick={() => handleAnswerClick(answer)}>
-                    {answer}
-                </button>
-            ))}
+            <div className={styles.answersContainer}>
+                {shuffledAnswers.map((answer, index) => (
+                    <button
+                        key={index}
+                        onClick={() => handleAnswerClick(answer)}>
+                        {answer}
+                    </button>
+                ))}
+            </div>
             {selectedAnswer === goodAnswer && (
-                <>
-                    <div>C'EST BON !</div>
-                    <div>
-                        <Image
-                            src={projectData.imageUrl}
-                            alt={`${projectData.title}'s cover`}
-                            width={200}
-                            height={200}
-                        />
-                        <h4>{projectData.artist}</h4>
-                        <h5>{goodAnswer}</h5>
-                        <p>{projectData.title}</p>
+                <div className={styles.answer}>
+                    <figure>
+                        <Image src={illustration} alt="" fill />
+                    </figure>
+                    <div className={styles.message}>
+                        <h2 style={{ color: "#2ecc71" }}>Bien joué !</h2>
+                        <div className={styles.correctAnswer}>
+                            <figure>
+                                <Image
+                                    src={projectData.imageUrl}
+                                    alt={`${projectData.title}'s cover`}
+                                    fill
+                                />
+                            </figure>
+                            <h4>{projectData.artist}</h4>
+                            <h5>{goodAnswer}</h5>
+                            <p>{projectData.title}</p>
+                        </div>
+                        <button
+                            className={styles.replayBtn}
+                            onClick={handleGoBack}>
+                            Rejouer !
+                        </button>
                     </div>
-                </>
+                </div>
             )}
-            {selectedAnswer === badAnswers.find((badAnswer) => badAnswer) && (
-                <>
-                    <h1>NON !</h1>
-                </>
+            {selectedAnswer && selectedAnswer !== goodAnswer && (
+                <div className={styles.answer}>
+                    <figure>
+                        <Image src={illustration} alt="" fill />
+                    </figure>
+                    <div className={styles.message}>
+                        <h2 style={{ color: "#c40000" }}>Aïe ! Dommage !</h2>
+                        <div className={styles.correctAnswer}>
+                            <figure>
+                                <Image
+                                    src={projectData.imageUrl}
+                                    alt={`${projectData.title}'s cover`}
+                                    fill
+                                />
+                            </figure>
+                            <h4>{projectData.artist}</h4>
+                            <h5>{goodAnswer}</h5>
+                            <p>{projectData.title}</p>
+                        </div>
+                        <button
+                            className={styles.replayBtn}
+                            onClick={handleGoBack}>
+                            Rejouer !
+                        </button>
+                    </div>
+                </div>
             )}
         </>
     );
