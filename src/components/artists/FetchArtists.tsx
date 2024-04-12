@@ -37,9 +37,7 @@ export const FetchArtists = () => {
     return (
         <div className={styles.grid}>
             {isLoading && (
-                <div className={styles.loadingScreen}>
-                    Chargement des artistes ...
-                </div>
+                <div className={styles.loadingScreen}>Chargement ...</div>
             )}
             {!isLoading &&
                 artists.map((artist) => (
