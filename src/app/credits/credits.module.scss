@@ -4,6 +4,7 @@
     align-items: center;
     gap: 30px;
     width: 100%;
+    padding: 0 0 30px;
 
     h1 {
         font-family: "protest";
@@ -45,6 +46,7 @@
             flex-direction: row;
             align-items: center;
             justify-content: space-around;
+            box-shadow: 0 0 20px #16161696;
 
             img.bgImage {
                 object-fit: cover;
