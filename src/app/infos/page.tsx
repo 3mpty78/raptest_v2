@@ -29,8 +29,9 @@ const page = () => {
                             trouver de quel <span>morceau</span> elle provient;
                         </li>
                         <li>
-                            Devine la cover : Une cover apparait, tu dois
-                            trouver de quel <span>projet</span> il s'agit;
+                            Devine la cover : Une cover floutée apparait, tu
+                            dois trouver à quel <span>projet</span> elle
+                            correspond;
                         </li>
                     </ul>
                 </div>
@@ -41,13 +42,13 @@ const page = () => {
                     <ul>
                         <li>
                             Hésites pas à me suivre sur <span>Insta</span> et{" "}
-                            <span>X</span> ! <br />
+                            <span>Twitter</span> ! <br />
                             L'app est destinée à évoluer, donc si t'as des{" "}
                             <span>suggestions</span>, je suis preneur !
                         </li>
                         <li>
-                            Si tu vois des erreurs, mentionne moi sur insta ou X
-                            pour que je corrige.
+                            Si tu vois des erreurs, mentionne moi sur Insta ou
+                            Twitter pour que je corrige.
                         </li>
                     </ul>
                 </div>
