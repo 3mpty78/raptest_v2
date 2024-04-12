@@ -10,7 +10,7 @@ interface Links {
 const navlinks: Links[] = [
     { name: "Accueil", path: "/" },
     { name: "Artistes", path: "/artists" },
-    { name: "Contact", path: "/dashboard" },
+    { name: "Contact", path: "/" },
 ];
 
 const Navbar = () => {
