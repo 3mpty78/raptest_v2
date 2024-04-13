@@ -18,7 +18,7 @@ const page = ({ params }: { params: { artistId: string } }) => {
                 title="Covers"
                 link="covers"
                 artistId={artistId}
-                description="Pas de sons, que des mots. A toi de trouver le titre !"
+                description="Une cover : un projet ! Devine le projet par son visuel."
             />
         </section>
     );
