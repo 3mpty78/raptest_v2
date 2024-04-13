@@ -3,6 +3,7 @@
     "short_name": "Raptest",
     "description": "Test tes connaissances des textes de tes rappeurs préférés avec ce blindtest revisité !",
     "start_url": "/",
+    "display_override": ["fullscreen", "minimal-ui"],
     "display": "standalone",
     "orientation": "portrait",
     "theme_color": "#252525",

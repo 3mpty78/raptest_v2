@@ -14,6 +14,7 @@ export default function Home() {
             <Link href="/infos" target="_top">
                 Plus d'infos
             </Link>
+            {/* ILLUSTRATION */}
         </main>
     );
 }

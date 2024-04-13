@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.scss";
 import Navbar from "@/components/navbar/Navbar";
+import InstallBtn from "@/components/installBtn/InstallBtn";
 
 const APP_NAME = "Raptest";
 const APP_DESCRIPTION =
@@ -19,7 +20,6 @@ export const metadata: Metadata = {
         capable: true,
         statusBarStyle: "default",
         title: APP_NAME,
-        // startUpImage: [],
     },
     formatDetection: {
         telephone: false,
@@ -44,7 +44,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-    themeColor: "#1E1E1E",
+    themeColor: "#252525",
 };
 
 export default function RootLayout({
@@ -58,6 +58,7 @@ export default function RootLayout({
                 <link rel="manifest" href="/manifest.json" />
             </head>
             <body>
+                <InstallBtn />
                 <header>
                     <Navbar />
                 </header>
