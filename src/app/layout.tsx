@@ -1,7 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.scss";
 import Navbar from "@/components/navbar/Navbar";
-import InstallBtn from "@/components/installBtn/InstallBtn";
 
 const APP_NAME = "Raptest";
 const APP_DESCRIPTION =
@@ -58,7 +57,6 @@ export default function RootLayout({
                 <link rel="manifest" href="/manifest.json" />
             </head>
             <body>
-                <InstallBtn />
                 <header>
                     <Navbar />
                 </header>
