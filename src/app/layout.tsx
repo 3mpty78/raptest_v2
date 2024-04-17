@@ -53,6 +53,7 @@ export default function RootLayout({
         <html lang="fr">
             <head>
                 <link rel="manifest" href="/manifest.json" />
+                <link rel="icon" href="./img/logo/icon-192x192.png" />
             </head>
             <body>
                 <header>
