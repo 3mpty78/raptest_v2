@@ -4,10 +4,10 @@ import styles from "./credits.module.scss";
 import Link from "next/link";
 import Image from "next/image";
 
-import empty from "../../../public/img/3mpty.png";
-import loz from "../../../public/img/loz.jpg";
-import insta from "../../../public/img/instagram.svg";
-import twitter from "../../../public/img/x.svg";
+import empty from "../../../public/img//team/3mpty.png";
+import loz from "../../../public/img//team/loz.jpg";
+import insta from "../../../public/img/icons/instagram.svg";
+import twitter from "../../../public/img/icons/x.svg";
 
 const page = () => {
     return (

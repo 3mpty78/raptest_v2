@@ -3,22 +3,24 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
-import illustration from "../../../public/img/winner.svg";
+import illustration from "../../../public/img/illustrations/winner.svg";
 
 interface Album {
     artist: string;
     title: string;
-    imageUrl: string;
+    cover: string;
 }
 
 const Answers = ({
     badAnswers,
     goodAnswer,
     projectData,
+    artist,
 }: {
     badAnswers: string[];
     goodAnswer: string;
     projectData: Album;
+    artist: string;
 }) => {
     const [selectedAnswer, setSelectedAnswer] = useState<string>("");
     const shuffleAnswers = (answers: string[]) => {
@@ -59,12 +61,12 @@ const Answers = ({
                         <div className={styles.correctAnswer}>
                             <figure>
                                 <Image
-                                    src={projectData.imageUrl}
+                                    src={projectData.cover}
                                     alt={`${projectData.title}'s cover`}
                                     fill
                                 />
                             </figure>
-                            <h4>{projectData.artist}</h4>
+                            <h4>{artist}</h4>
                             <h5>{goodAnswer}</h5>
                             <p>{projectData.title}</p>
                         </div>
@@ -86,12 +88,12 @@ const Answers = ({
                         <div className={styles.correctAnswer}>
                             <figure>
                                 <Image
-                                    src={projectData.imageUrl}
+                                    src={projectData.cover}
                                     alt={`${projectData.title}'s cover`}
                                     fill
                                 />
                             </figure>
-                            <h4>{projectData.artist}</h4>
+                            <h4>{artist}</h4>
                             <h5>{goodAnswer}</h5>
                             <p>{projectData.title}</p>
                         </div>

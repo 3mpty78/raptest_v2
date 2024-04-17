@@ -66,13 +66,6 @@
         font-weight: lighter;
         font-style: italic;
         border-radius: 15px;
-
-        &::before {
-            content: "'' ";
-        }
-        &::after {
-            content: " ''";
-        }
     }
 
     .answersContainer {

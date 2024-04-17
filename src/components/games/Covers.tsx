@@ -1,51 +1,28 @@
 "use client";
-import { fetchAlbums } from "@/app/functions/fetchAlbums";
-import { fetchArtists } from "@/app/functions/fetchArtists";
 import { useEffect, useState } from "react";
 import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
 import Answers from "./Answers";
 import Image from "next/image";
-
-interface Artist {
-    _id: string;
-    name: string;
-}
-interface Album {
-    artist: string;
-    title: string;
-    imageUrl: string;
-}
+import data from "../../../public/artistsData.json";
 
 const Covers = ({ artistId }: { artistId: string }) => {
     const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [allArtists, setAllArtists] = useState<Artist[]>([]);
-    const [allAlbums, setAllAlbums] = useState<Album[]>([]);
+    const [goodArtist, setGoodArtist] = useState<string>("");
     const [randomCover, setRandomCover] = useState<string>("");
-    const [selectedAlbumData, setSelectedAlbumData] = useState<Album>();
+    const [selectedAlbumData, setSelectedAlbumData] = useState<any>();
     const [goodAnswer, setGoodAnswer] = useState<string>("");
     const [badAnswers, setBadAnswers] = useState<string[]>([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            // FETCH ARTISTS
-            const { artistsData } = await fetchArtists();
-            setAllArtists(artistsData);
-
-            // FETCH ALBUMS
-            const { albumsData } = await fetchAlbums();
-            setAllAlbums(albumsData);
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        if (allArtists.length > 0 && allAlbums.length > 0) {
-            const selectedArtist = allArtists.find(
+        if (data.length > 0) {
+            const selectedArtist = data.find(
                 (artist) => artist._id.toString() === artistId
             );
-            const associatedAlbums = allAlbums.filter(
-                (album) => album.artist === selectedArtist?.name
-            );
+            if (!selectedArtist) return;
+
+            const associatedAlbums = selectedArtist?.albums;
+
+            setGoodArtist(selectedArtist.name);
 
             // CREATION RANDOM INDEX
             const generateRandomIndex = Math.floor(
@@ -55,7 +32,7 @@ const Covers = ({ artistId }: { artistId: string }) => {
             setSelectedAlbumData(randomProject);
 
             setGoodAnswer(randomProject.title);
-            setRandomCover(randomProject.imageUrl);
+            setRandomCover(randomProject.cover);
 
             // CREATIONS DES REPONSES
             const threeBadAnswers = associatedAlbums
@@ -67,7 +44,7 @@ const Covers = ({ artistId }: { artistId: string }) => {
             // MASQUER L'ECRAN DE CHARGEMENT
             setIsLoading(false);
         }
-    }, [allArtists, allAlbums, artistId, goodAnswer]);
+    }, [artistId, goodAnswer]);
 
     return (
         <>
@@ -80,6 +57,7 @@ const Covers = ({ artistId }: { artistId: string }) => {
                         <Image src={randomCover} alt="Random cover" fill />
                     </figure>
                     <Answers
+                        artist={goodArtist}
                         badAnswers={badAnswers}
                         goodAnswer={goodAnswer}
                         projectData={selectedAlbumData}

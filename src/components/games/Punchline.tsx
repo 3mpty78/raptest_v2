@@ -4,58 +4,48 @@ import { fetchArtists } from "@/app/functions/fetchArtists";
 import { useEffect, useState } from "react";
 import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
 import Answers from "./Answers";
-
-interface Track {
-    title: string;
-    lyrics: [string];
-}
+import data from "../../../public/artistsData.json";
 interface Artist {
     _id: string;
     name: string;
+    picture: string;
+    albums: [
+        title: string,
+        cover: string,
+        tracks: [title: string, lyrics: [string]]
+    ];
 }
 interface Album {
-    artist: string;
     title: string;
-    imageUrl: string;
+    cover: string;
     tracks: [{ title: string; lyrics: string[] }];
 }
 
 const Punchline = ({ artistId }: { artistId: string }) => {
-    const [isLoading, setIsLoading] = useState<boolean>(true);
-    const [allArtists, setAllArtists] = useState<Artist[]>([]);
-    const [allAlbums, setAllAlbums] = useState<Album[]>([]);
+    const [isLoading, setIsLoading] = useState<boolean>(false);
+    const [goodArtist, setGoodArtist] = useState<string>("");
     const [randomPunchline, setRandomPuncline] = useState<string>("");
-    const [selectedAlbumData, setSelectedAlbumData] = useState<Album>();
+    const [selectedAlbumData, setSelectedAlbumData] = useState<any>();
     const [goodAnswer, setGoodAnswer] = useState<string>("");
     const [badAnswers, setBadAnswers] = useState<string[]>([]);
 
     useEffect(() => {
-        const fetchData = async () => {
-            // FETCH ARTISTS
-            const { artistsData } = await fetchArtists();
-            setAllArtists(artistsData);
-
-            // FETCH ALBUMS
-            const { albumsData } = await fetchAlbums();
-            setAllAlbums(albumsData);
-        };
-        fetchData();
-    }, []);
-
-    useEffect(() => {
-        if (allArtists.length > 0 && allAlbums.length > 0) {
-            const selectedArtist = allArtists.find(
-                (artist) => artist._id.toString() === artistId
+        if (data.length > 0) {
+            const selectedArtist = data.find(
+                (artist) => artist._id === artistId
             );
-            const associatedProject = allAlbums.filter(
-                (album) => album.artist === selectedArtist?.name
-            );
+            if (!selectedArtist) {
+                return;
+            }
+            setGoodArtist(selectedArtist?.name);
+            const allArtistAlbums = selectedArtist?.albums;
 
             // CREATION RANDOM INDEX
-            const generateRandomIndex = Math.floor(
-                Math.random() * associatedProject.length
+            const createRandomIndex = Math.floor(
+                Math.random() * selectedArtist?.albums.length
             );
-            const randomProject = associatedProject[generateRandomIndex];
+
+            const randomProject = selectedArtist.albums[createRandomIndex];
             setSelectedAlbumData(randomProject);
 
             // RECUPERATION RANDOM TRACK
@@ -76,9 +66,8 @@ const Punchline = ({ artistId }: { artistId: string }) => {
             setRandomPuncline(randomPunchline);
 
             // CREATIONS DES REPONSES
-            const allTracks = associatedProject.flatMap(
-                (album) => album.tracks
-            );
+            if (!allArtistAlbums) return;
+            const allTracks = allArtistAlbums.flatMap((album) => album.tracks);
             const threeBadAnswers = allTracks
                 .filter((track) => track.title !== goodAnswer)
                 .slice(0, 3)
@@ -88,7 +77,7 @@ const Punchline = ({ artistId }: { artistId: string }) => {
             // MASQUER L'ECRAN DE CHARGEMENT
             setIsLoading(false);
         }
-    }, [allArtists, allAlbums, artistId, goodAnswer]);
+    }, [artistId, goodAnswer]);
 
     return (
         <>
@@ -102,6 +91,7 @@ const Punchline = ({ artistId }: { artistId: string }) => {
                         badAnswers={badAnswers}
                         goodAnswer={goodAnswer}
                         projectData={selectedAlbumData}
+                        artist={goodArtist}
                     />
                 </>
             )}
