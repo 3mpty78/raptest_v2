@@ -52,6 +52,8 @@ export default function RootLayout({
                     property="og:image"
                     content="https://ogcdn.net/c078a98b-9a33-4eaf-a5cf-e5ebf3ea450c/v1/raptest.vercel.app/Raptest/Test%20tes%20connaissances%20des%20textes%20de%20tes%20rappeurs%20pr%C3%A9f%C3%A9r%C3%A9s%20avec%20ce%20blindtest%20revisit%C3%A9%20!/https%3A%2F%2Fopengraph.b-cdn.net%2Fproduction%2Fdocuments%2Ff2f67fad-38cf-4ed7-8a03-64582a2eb9c0.jpg%3Ftoken%3DKfG5r6wVrp4KWgeiqnEdPxLH6d5DRapjqO6vZlSG8uM%26height%3D675%26width%3D1200%26expires%3D33249390372/og.png"
                 />
+                <meta property="og:image:width" content="1200" />
+                <meta property="og:image:height" content="630" />
                 <meta name="twitter:card" content="summary_large_image" />
                 <meta property="twitter:domain" content="raptest.vercel.app" />
                 <meta
