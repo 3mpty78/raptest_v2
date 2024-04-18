@@ -7,7 +7,7 @@ const APP_DESCRIPTION =
     "Test tes connaissances des textes de tes rappeurs préférés avec ce blindtest revisité !";
 const APP_TITLE_TEMPLATE = "%s - Raptest";
 const IMAGE_URL =
-    "https://images.pexels.com/photos/2317685/pexels-photo-2317685.jpeg";
+    "https://raptest.vercel.app/_next/image?url=%2Fimg%2Fillustrations%2Fmeta_banner.png&w=640&q=75";
 
 export const metadata: Metadata = {
     applicationName: APP_NAME,
