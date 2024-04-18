@@ -3,7 +3,8 @@
 import Image from "next/image";
 import React, { useState } from "react";
 import styles from "../../app/[artistId]/games/blindtest/blindtest.module.scss";
-import illustration from "../../../public/img/illustrations/winner.svg";
+import winner from "../../../public/img/illustrations/winner.png";
+import loser from "../../../public/img/illustrations/loser.png";
 
 interface Album {
     artist: string;
@@ -54,10 +55,10 @@ const Answers = ({
             {selectedAnswer === goodAnswer && (
                 <div className={styles.answer}>
                     <figure>
-                        <Image src={illustration} alt="" fill />
+                        <Image src={winner} alt="Winner illustration" fill />
                     </figure>
                     <div className={styles.message}>
-                        <h2 style={{ color: "#2ecc71" }}>Bien joué !</h2>
+                        <h2 style={{ color: "#9D4EDD" }}>Bien joué !</h2>
                         <div className={styles.correctAnswer}>
                             <figure>
                                 <Image
@@ -81,7 +82,7 @@ const Answers = ({
             {selectedAnswer && selectedAnswer !== goodAnswer && (
                 <div className={styles.answer}>
                     <figure>
-                        <Image src={illustration} alt="" fill />
+                        <Image src={loser} alt="Loser illustration" fill />
                     </figure>
                     <div className={styles.message}>
                         <h2 style={{ color: "#c40000" }}>Aïe ! Dommage !</h2>

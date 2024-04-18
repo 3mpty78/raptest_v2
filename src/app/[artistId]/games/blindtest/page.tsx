@@ -7,7 +7,7 @@ const page = ({ params }: { params: { artistId: string } }) => {
         <section className={styles.container}>
             <p className={styles.description}>
                 De quel morceau <br />
-                proviennent ces lyrics ?
+                proviennent ces <span>lyrics</span> ?
             </p>
             <Punchline artistId={artistId} />
         </section>

@@ -2,6 +2,9 @@
 import Button from "@/components/button/Button";
 import styles from "./page.module.scss";
 import Link from "next/link";
+import Image from "next/image";
+
+import illustration from "../../public/img/illustrations/winner.png";
 
 export default function Home() {
     return (
@@ -14,7 +17,9 @@ export default function Home() {
             <Link href="/infos" target="_top">
                 Plus d'infos
             </Link>
-            {/* ILLUSTRATION */}
+            <figure>
+                <Image src={illustration} alt="Raptest logo" fill />
+            </figure>
         </main>
     );
 }

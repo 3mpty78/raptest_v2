@@ -26,6 +26,7 @@
 
         span {
             font-family: barlowBlack;
+            color: #9d4edd;
         }
     }
 
@@ -65,7 +66,8 @@
         font-family: "barlowRegular";
         font-weight: lighter;
         font-style: italic;
-        border-radius: 15px;
+        border-radius: 18px;
+        text-wrap: balance;
     }
 
     .answersContainer {
@@ -85,6 +87,12 @@
             max-width: 350px;
             text-align: center;
             border-radius: 15px;
+            font-size: 16px;
+
+            &:active {
+                background-color: #9d4edd;
+                color: #ececec;
+            }
         }
     }
     .answer {
@@ -97,13 +105,17 @@
         display: flex;
         flex-direction: column;
         justify-content: space-between;
-        gap: 15px;
         align-items: center;
+        padding: 15px 0 0;
 
         figure {
             width: 100%;
             flex: 2;
             position: relative;
+
+            img {
+                object-fit: contain;
+            }
         }
 
         .message {
@@ -159,7 +171,7 @@
             }
 
             .replayBtn {
-                background-color: #1e1e1e;
+                background-color: #9d4edd;
                 color: #ececec;
                 padding: 15px 60px;
                 text-align: center;

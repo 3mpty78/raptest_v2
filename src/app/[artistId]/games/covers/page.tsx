@@ -8,7 +8,7 @@ const page = ({ params }: { params: { artistId: string } }) => {
         <section className={styles.container}>
             <p className={styles.description}>
                 A quel projet correspond <br />
-                cette cover ?
+                cette <span>cover</span> ?
             </p>
             <Covers artistId={artistId} />
         </section>
