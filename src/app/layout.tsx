@@ -1,6 +1,7 @@
 import type { Metadata, Viewport } from "next";
 import "./globals.scss";
 import Navbar from "@/components/navbar/Navbar";
+import { Analytics } from "@vercel/analytics/react";
 
 const APP_NAME = "Raptest";
 const APP_DESCRIPTION =
@@ -60,6 +61,7 @@ export default function RootLayout({
                     <Navbar />
                 </header>
                 {children}
+                <Analytics />
             </body>
         </html>
     );
